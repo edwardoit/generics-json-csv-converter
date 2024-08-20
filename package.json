@@ -1,0 +1,16 @@
+{
+  "name": "csvjsonsupplier",
+  "version": "1.0.0",
+  "description": "csvToJson and JsonToCsv supplier",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Edoardo Cresci",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.4"
+  }
+}
