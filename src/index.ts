@@ -2,15 +2,20 @@
 
 import {getFieldName} from "./core";
 
+/**
+ * json to csv
+ * provide as actual parameters {jsonObjectsArray} as array of json objects
+ * provide as actual parameters {jsonKeyStructureNames} an array of key of jsonObjectsArray's json objects
+ */
 export async function jsonToCsv(
-    inputFieldsName: any[],
-    keyNames: string[],
+    jsonObjectsArray: any[],
+    jsonKeyStructureNames: string[],
 ): Promise<string> {
 
 
-    const csvHeader = inputFieldsName.map((value, index) => {
+    const csvHeader = jsonObjectsArray.map((value, index) => {
         if (index === 0) {
-            return getFieldName(value, keyNames[index].trim());
+            return getFieldName(value, jsonKeyStructureNames[index].trim());
         }
         return '';
     }).filter((value) => value !== '').join();
@@ -18,9 +23,9 @@ export async function jsonToCsv(
 
     // join header and body, and break into separate lines
     const itemsArray: string[] = [];
-    inputFieldsName.forEach((value) => {
+    jsonObjectsArray.forEach((value) => {
         let partialArr : any[] = [];
-        for(const key of keyNames) {
+        for(const key of jsonKeyStructureNames) {
             partialArr.push(value[`${key}`]);
 
         }
@@ -38,7 +43,7 @@ export async function jsonToCsv(
 }
 
 export async function csvToJson(
-    inputFieldsName: any[],
-    keyNames: string[],
+    jsonObjectsArray: any[],
+    jsonKeyStructureNames: string[],
 ): Promise<any> {
 }
